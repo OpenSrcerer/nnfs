@@ -1,4 +1,5 @@
 from prettytable import PrettyTable
+import datetime
 
 
 class Table:
@@ -19,11 +20,17 @@ class Table:
         x.add_rows(self._rows)
         return x.get_string()
 
-    # TODO: Bubble Sort - Improve
     # TODO: Add ASC/DESC
-    # TODO: Add Special handling for Date column
-    def sort_by_column(self, column):
+    def sort_by_column(self, column, descending):
+        comparison_lambda = lambda left, right: left < right if descending else left > right
+
         for i in range(len(self._rows)):
             for j in range(0, len(self._rows) - i - 1):
-                if self._rows[j][column] > self._rows[j + 1][column]:
-                    self._rows[j], self._rows[j + 1] = self._rows[j + 1], self._rows[j]
+                if column == 1:
+                    date_left = datetime.datetime.strptime(self._rows[j][column], "%d-%b-%y")
+                    date_right = datetime.datetime.strptime(self._rows[j + 1][column], "%d-%b-%y")
+                    if comparison_lambda(date_left, date_right):
+                        self._rows[j], self._rows[j + 1] = self._rows[j + 1], self._rows[j]
+                else:
+                    if comparison_lambda(self._rows[j][column], self._rows[j + 1][column]):
+                        self._rows[j], self._rows[j + 1] = self._rows[j + 1], self._rows[j]
