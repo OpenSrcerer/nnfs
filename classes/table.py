@@ -1,6 +1,8 @@
 from prettytable import PrettyTable
 import datetime
 
+from utils.time_utils import time_string_to_millis, millis_to_time_string
+
 
 class Table:
     _headings = []
@@ -8,11 +10,13 @@ class Table:
 
     def __init__(self, file):
         for i, line in enumerate(file):
-            split_line = line.strip().split(',')
+            split_line = list(map(lambda token: token.replace("_", " "), line.strip().split(',')))  # Remove underscores
             if i == 0:  # Make the first rows heading rows
                 self._headings = split_line
+                self._headings.append("AVERAGE LAP TIME")  # Heading for Average Lap Time
             else:
-                self._rows.append(split_line)
+                split_line.append(self._parse_average_time(split_line))  # Add custom header
+                self._rows.append(split_line)  # Add all rows
 
     def __str__(self):
         x = PrettyTable()
@@ -20,7 +24,11 @@ class Table:
         x.add_rows(self._rows)
         return x.get_string()
 
-    # TODO: Add ASC/DESC
+    def _parse_average_time(self, split_line):
+        time_ms = time_string_to_millis(split_line[len(split_line) - 1])
+        num_laps = int(split_line[len(split_line) - 2])
+        return millis_to_time_string(time_ms / num_laps)
+
     def sort_by_column(self, column, descending):
         comparison_lambda = lambda left, right: left < right if descending else left > right
 
