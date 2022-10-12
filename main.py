@@ -27,7 +27,7 @@ def read_column_choices():
     table.sort_by_column(
         int(column_choice) - 1,
         False if order_choice == "1" else True)
-    print(table)
+    print(table.stringify(False))
 
 
 def print_column_choices():
@@ -66,7 +66,7 @@ def read_choices():
 
     if choice == "1":
         load_table()
-        print(table)
+        print(table.stringify(True))
     elif choice == "2":
         print("TODO: Not implemented yet")
     elif choice == "3":
