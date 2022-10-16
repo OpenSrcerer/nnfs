@@ -5,19 +5,40 @@ from utils.time_utils import parse_average_time, time_string_to_millis
 
 
 class Table:
+    """
+    A table with one row of headings and multiple rows..
+    """
     _racer_avg_lap_dict = {}
-    _headings = []
-    _rows = []
+    _headings: list = []
+    _rows: list[list] = []
 
     def __init__(self, file):
+        """
+        Reads a CSV file in the format
+
+        :param file:
+        """
         for i, line in enumerate(file):
             split_line = list(map(lambda token: token.replace("_", " "), line.strip().split(',')))  # Remove underscores
             self._parse_headings_rows(i, split_line)
 
-    def stringify(self, simple):
+    def stringify(self, simple, predicate=lambda row: True):
         x = PrettyTable()
+        x.clear()
+
+        # Filter rows on condition
+        local_rows = list(filter(
+            predicate,
+            list(map(lambda row: row[:len(row) - 1], self._rows)) if simple else self._rows
+        ))
+
+        if len(local_rows) == 0:
+            x.field_names = ["Empty Table"]
+            x.add_row(["No Data"])
+            return x.get_string()
+
         x.field_names = self._headings[:len(self._headings) - 1] if simple else self._headings
-        x.add_rows(list(map(lambda row: row[:len(row) - 1], self._rows)) if simple else self._rows)
+        x.add_rows(local_rows)
         return x.get_string()
 
     def _parse_headings_rows(self, i, split_line):

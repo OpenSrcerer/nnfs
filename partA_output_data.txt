@@ -1,0 +1,25 @@
++---------------+-----------+------------------+----------+------+--------------+------------------+
+|   GRAND PRIX  |    DATE   |      WINNER      |   CAR    | LAPS |     TIME     | AVERAGE LAP TIME |
++---------------+-----------+------------------+----------+------+--------------+------------------+
+|   Australia   | 25-Mar-18 | Sebastian Vettel | FERRARI  |  58  | 01:29:33.000 |   00:01:32.637   |
+|    Bahrain    | 08-Apr-18 | Sebastian Vettel | FERRARI  |  57  | 01:32:01.940 |   00:01:36.876   |
+|     China     | 15-Apr-18 | Daniel Ricciardo | RED BULL |  56  | 01:35:36.380 |   00:01:42.435   |
+|   Azerbaijan  | 29-Apr-18 |  Lewis Hamilton  | MERCEDES |  51  | 01:43:44.291 |   00:02:02.044   |
+|     Spain     | 13-May-18 |  Lewis Hamilton  | MERCEDES |  66  | 01:35:29.972 |   00:01:26.817   |
+|     Monaco    | 27-May-18 | Daniel Ricciardo | RED BULL |  78  | 01:42:54.807 |   00:01:19.164   |
+|     Canada    | 10-Jun-18 | Sebastian Vettel | FERRARI  |  68  | 01:28:31.377 |   00:01:18.108   |
+|     France    | 24-Jun-18 |  Lewis Hamilton  | MERCEDES |  53  | 01:30:11.385 |   00:01:42.101   |
+|    Austria    | 01-Jul-18 |  Max Verstappen  | RED BULL |  71  | 01:21:56.024 |   00:01:09.239   |
+| Great Britain | 08-Jul-18 | Sebastian Vettel | FERRARI  |  52  | 01:27:29.784 |   00:01:40.957   |
+|    Germany    | 22-Jul-18 |  Lewis Hamilton  | MERCEDES |  67  | 01:32:29.845 |   00:01:22.833   |
+|    Hungary    | 29-Jul-18 |  Lewis Hamilton  | MERCEDES |  70  | 01:37:16.427 |   00:01:23.377   |
+|    Belgium    | 26-Aug-18 | Sebastian Vettel | FERRARI  |  44  | 01:23:34.476 |   00:01:53.965   |
+|     Italy     | 02-Sep-18 |  Lewis Hamilton  | MERCEDES |  53  | 01:16:54.484 |   00:01:27.065   |
+|   Singapore   | 16-Sep-18 |  Lewis Hamilton  | MERCEDES |  61  | 01:51:11.611 |   00:01:49.370   |
+|     Russia    | 30-Sep-18 |  Lewis Hamilton  | MERCEDES |  53  | 01:27:25.181 |   00:01:38.965   |
+|     Japan     | 07-Oct-18 |  Lewis Hamilton  | MERCEDES |  53  | 01:27:17.062 |   00:01:38.812   |
+| United States | 21-Oct-18 |  Kimi Raikkonen  | FERRARI  |  56  | 01:34:18.643 |   00:01:41.047   |
+|     Mexico    | 28-Oct-18 |  Max Verstappen  | RED BULL |  71  | 01:38:28.851 |   00:01:23.223   |
+|     Brazil    | 11-Nov-18 |  Lewis Hamilton  | MERCEDES |  71  | 01:27:09.066 |   00:01:13.648   |
+|   Abu Dhabi   | 25-Nov-18 |  Lewis Hamilton  | MERCEDES |  55  | 01:39:40.382 |   00:01:48.734   |
++---------------+-----------+------------------+----------+------+--------------+------------------+
