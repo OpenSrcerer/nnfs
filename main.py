@@ -3,6 +3,7 @@ import os
 from typing import Optional
 
 from classes.table import Table
+from utils.charting_utils import display_chart
 from utils.io_utils import print_choices, print_order_choices, print_column_choices, validate_digit_input
 
 # This is a global variable to contain the table.
@@ -16,7 +17,7 @@ def run_program() -> None:
     """
     Function that serves as an entry point for the program.
 
-    :return:
+    :return: None
     """
     print("""
     Hello, this is my CS340 Course Project Program.
@@ -53,7 +54,7 @@ def read_choices() -> None:
     elif choice == "4":
         read_column_choices()
     elif choice == "5":
-        print("TODO: Not implemented yet")
+        display_chart(table)
     elif choice == "6":
         print("This program has ceased to be! It is but an ex-program!")
         quit(0)  # Exit with a happy error code :)
@@ -87,7 +88,7 @@ def search_by_laps() -> None:
         return
 
     table.sort_by_column(0, False)
-    print(table.stringify(False, lambda row: int(row[len(row) - 3]) >= int(lap_choice)))
+    print(table.stringify(True, lambda row: int(row[len(row) - 2]) >= int(lap_choice)))
 
 
 def write_and_read_table() -> None:

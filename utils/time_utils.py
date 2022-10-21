@@ -1,17 +1,17 @@
 from datetime import timedelta
 
 
-def parse_average_time(split_line) -> str:
+def parse_average_time(file_row) -> str:
     """
     Given split_line, extracts the TIME and LAPS fields,
     then returns a time string for TIME / LAPS.
 
-    :param split_line: A split line in the format
+    :param file_row: A split line in the format
     [GRAND PRIX, DATE, WINNER, CAR, LAPS, TIME]
     :return:
     """
-    time_ms = time_string_to_millis(split_line[len(split_line) - 1])
-    num_laps = int(split_line[len(split_line) - 2])
+    time_ms = time_string_to_millis(file_row[len(file_row) - 1])
+    num_laps = int(file_row[len(file_row) - 2])
     return millis_to_time_string(time_ms / num_laps)
 
 
