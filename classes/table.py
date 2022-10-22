@@ -2,17 +2,13 @@ from prettytable import PrettyTable
 import datetime
 
 from utils.charting_utils import num_list_average
-from utils.time_utils import parse_average_time, time_string_to_millis
+from utils.time_utils import time_string_to_millis, avg_time_per_lap, millis_to_time_string
 
 
 class Table:
     """
-    A table with one row of headings and multiple rows..
+    A table with one row of headings and multiple data rows.
     """
-    _racer_avg_lap_times: dict = {}
-    _summed_racer_avg_lap_times: list[tuple] = []
-    _headings: list = []
-    _rows: list[list] = []
 
     def __init__(self, file):
         """
@@ -20,6 +16,11 @@ class Table:
 
         :param file:
         """
+        self._racer_avg_race_times: dict = {}
+        self._summed_racer_avg_lap_times: list[tuple] = []
+        self._headings: list = []
+        self._rows: list[list] = []
+
         for i, line in enumerate(file):
             file_row = list(map(lambda token: token.replace("_", " "), line.strip().split(',')))  # Remove underscores
             self._parse_headings_rows(i, file_row)
@@ -67,20 +68,20 @@ class Table:
             self._headings = file_row
             self._headings.append("AVERAGE LAP TIME")  # Heading for Average Lap Time
         else:
-            average_racer_time = parse_average_time(file_row)
-            self._parse_racer_avg_time(file_row[2], time_string_to_millis(file_row[len(file_row) - 1]))
-            file_row.append(average_racer_time)  # Add average racer time to line
+            average_lap_time_millis = avg_time_per_lap(file_row)
+            self._parse_racer_avg_time(file_row[2], average_lap_time_millis)
+            file_row.append(millis_to_time_string(average_lap_time_millis))  # Add average racer time to end of row
             self._rows.append(file_row)  # Add all rows
 
     def _sum_average_lap_time_driver(self):
-        for racer, avg_list in self._racer_avg_lap_times.items():
+        for racer, avg_list in self._racer_avg_race_times.items():
             if len(avg_list) == 0:
                 continue
             else:
                 self._summed_racer_avg_lap_times.append((racer, num_list_average(avg_list)))
-        self._summed_racer_avg_lap_times.sort(key=lambda tuple: tuple[1])
+        self._summed_racer_avg_lap_times.sort(key=lambda tup: tup[1])
 
-    def _parse_racer_avg_time(self, racer_name, average_racer_time):
-        if not self._racer_avg_lap_times.__contains__(racer_name):
-            self._racer_avg_lap_times[racer_name] = []
-        self._racer_avg_lap_times[racer_name].append(average_racer_time)
+    def _parse_racer_avg_time(self, racer_name, average_lap_time_millis):
+        if not self._racer_avg_race_times.__contains__(racer_name):
+            self._racer_avg_race_times[racer_name] = []
+        self._racer_avg_race_times[racer_name].append(average_lap_time_millis)
