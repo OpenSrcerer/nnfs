@@ -24,8 +24,9 @@ font.weight: bold
 font.size: 12
 
 ### AXES
-axes.grid: False
-axes.facecolor: white
+axes.grid: True
+axes.grid.axis: y
+axes.axisbelow: True
 axes.linewidth: 1.0
 axes.titlesize: 20
 axes.titleweight: bold
@@ -33,4 +34,9 @@ axes.labelsize: 12
 axes.labelweight: bold
 axes.spines.top: True
 axes.spines.right: True
-axes.prop_cycle: cycler('color', ['0072B2', '009E73', 'D55E00', 'CC79A7', 'F0E442', '56B4E9'])
+
+### GRID
+grid.alpha: 1.0
+grid.color: gray
+grid.linestyle: :
+grid.linewidth: 0.5

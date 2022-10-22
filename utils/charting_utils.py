@@ -1,10 +1,17 @@
 from datetime import datetime, timedelta
 
 import matplotlib.pyplot as plt
-from matplotlib.dates import DateFormatter, MinuteLocator, SecondLocator
+from matplotlib.dates import DateFormatter, SecondLocator
 
 
-def display_chart(table):
+def display_chart(table) -> None:
+    """
+    Display a pretty chart regarding the average lap time for every racer
+    summed up by Grand Prix.
+
+    :param table:
+    :return: None
+    """
     racer_names = []
     racer_times = []
 
@@ -12,11 +19,15 @@ def display_chart(table):
         racer_names.append(name.replace(' ', '\n'))
         racer_times.append(datetime.utcfromtimestamp(avg_time // 1000))
 
-    plt.bar(list(range(0, len(racer_names))), racer_times, tick_label=racer_names, width=0.6)
-
+    plt.bar(list(range(0, len(racer_names))),
+            racer_times,
+            tick_label=racer_names,
+            width=0.6,
+            color=['#FF4E00', '#8EA604', '#650D1B', '#EC9F05', '#3F7CAC'],
+            edgecolor=['black'])
+    plt.title("Average Lap Times By Driver")
     plt.ylabel('Average Lap Time')
     plt.xticks(rotation=45)
-    plt.title("Average Lap Times By Driver")
 
     ax = plt.subplot()
     ax.yaxis.set_major_locator(SecondLocator(bysecond=range(0, 60, 5)))
@@ -30,7 +41,11 @@ def display_chart(table):
     plt.show()
 
 
-def num_list_average(number_list: list[int]):
+def num_list_average(number_list: list[int]) -> float:
+    """
+    :param number_list: List of integers.
+    :return: Average of the list.
+    """
     avg = 0
     for num in number_list:
         avg += num
