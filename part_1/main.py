@@ -100,12 +100,12 @@ def write_and_read_table() -> None:
 
     :return: None
     """
-    with open("partA_output_data.txt", "w") as writeFile:
+    with open("../partA_output_data.txt", "w") as writeFile:
         writeFile.write(table.stringify(False))
         writeFile.flush()  # Flush buffer so file is immediately written
         os.fsync(writeFile)
 
-    with open("partA_output_data.txt", "r") as readFile:
+    with open("../partA_output_data.txt", "r") as readFile:
         read_table = readFile.read()
         print(read_table)
 

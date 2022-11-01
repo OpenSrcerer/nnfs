@@ -2,8 +2,8 @@ import datetime
 
 from prettytable import PrettyTable
 
-from utils.charting_utils import num_list_average
-from utils.time_utils import avg_time_per_lap, millis_to_time_string
+from part_1.utils.charting_utils import num_list_average
+from part_1.utils.time_utils import avg_time_per_lap, millis_to_time_string
 
 
 class Table:
