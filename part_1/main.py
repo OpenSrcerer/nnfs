@@ -4,7 +4,8 @@ from typing import Optional
 
 from classes.table import Table
 from utils.charting_utils import display_chart
-from utils.io_utils import print_choices, print_order_choices, print_column_choices, validate_digit_input
+from utils.io_utils import print_choices, print_order_choices, print_column_choices
+from common.io_utils import validate_digit_input
 
 # This is a global variable to contain the table.
 # Reasoning for this because I don't think that global variables
@@ -20,7 +21,7 @@ def run_program() -> None:
     :return: None
     """
     print("""
-    Hello, this is my CS340 Course Project Program.
+    Hello, this is my CS340 Course Project Program (Part 1).
     Please choose from the following options:
     """, end='')
 
