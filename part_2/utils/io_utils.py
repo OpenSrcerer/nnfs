@@ -13,7 +13,8 @@ def print_choices() -> None:
 
     :return: None
     """
-    print("""-----------------------------------------------------------------
+    print("""
+-----------------------------------------------------------------
         1) Enter network topology
         2) Initiate a training pass
         3) Classify test data

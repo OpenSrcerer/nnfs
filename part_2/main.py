@@ -59,7 +59,25 @@ def read_choices() -> None:
     elif choice == "4":
         display_training_graphics()
     elif choice == "5":
-        print("This program has ceased to be! It is but an ex-program!")
+        print("""
+This program has ceased to be! It is but an ex-program!
+            _
+          /` '\\
+        /| @   l
+        \\|      \\
+          `\\     `\\_
+            \\    __ `\\
+            l  \\   `\\ `\\__
+             \\  `\\./`     ``\\
+               \\ ____ / \\   l
+                 ||  ||  )  /
+        -------(((-(((---l /-------
+                        l /
+                       / /
+                      / /
+                     //
+                    /
+        """)
         quit(0)  # Exit with a happy error code :)
 
 

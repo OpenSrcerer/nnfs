@@ -63,7 +63,25 @@ def read_choices() -> None:
     elif choice == "5":
         display_chart(table)
     elif choice == "6":
-        print("This program has ceased to be! It is but an ex-program!")
+        print("""
+        This program has ceased to be! It is but an ex-program!
+            _
+          /` '\\
+        /| @   l
+        \\|      \\
+          `\\     `\\_
+            \\    __ `\\
+            l  \\   `\\ `\\__
+             \\  `\\./`     ``\\
+               \\ ____ / \\   l
+                 ||  ||  )  /
+        -------(((-(((---l /-------
+                        l /
+                       / /
+                      / /
+                     //
+                    /
+        """)
         quit(0)  # Exit with a happy error code :)
 
 
