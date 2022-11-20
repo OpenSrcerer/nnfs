@@ -163,6 +163,7 @@ def training_pass():
         writeFile.write(training_string)
         writeFile.flush()  # Flush buffer so file is immediately written
         os.fsync(writeFile)
+    print("Saved training_progress.txt!")
 
 
 def classify_test_data():
@@ -191,6 +192,7 @@ def classify_test_data():
         writeFile.write(output_string)
         writeFile.flush()  # Flush buffer so file is immediately written
         os.fsync(writeFile)
+    print("Saved training_output.txt!")
 
 
 def display_training_graphics():

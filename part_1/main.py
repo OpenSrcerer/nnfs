@@ -133,6 +133,7 @@ def write_and_read_table() -> None:
     with open("./partA_output_data.txt", "r") as readFile:
         read_table = readFile.read()
         print(read_table)
+    print("Saved partA_output_data.txt!")
 
 
 def read_column_choices() -> None:
