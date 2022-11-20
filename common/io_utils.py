@@ -1,3 +1,9 @@
+#
+# Made by Daniel Stefani for the Course Project in CS340, due December 2022.
+# This work is licensed under The Unlicense, feel free to use as you wish.
+# All image assets belong to their respective owners. This project is for academic purposes only.
+#
+
 def validate_digit_input(choice, lower_bound, upper_bound) -> bool:
     """
     Utility function to validate that a string satisfies these conditions:

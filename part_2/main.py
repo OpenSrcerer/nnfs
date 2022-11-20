@@ -189,6 +189,7 @@ def display_training_graphics():
     losses = list(map(lambda v: v.unwrap, model._loss_list))
     epochs = list(((i * 100) for i, _ in enumerate(losses)))
 
+    # Draw plot
     plt.plot(epochs, losses, "-o")
     plt.title("Loss Function vs. Epochs")
     plt.xlabel("Training Epoch")
