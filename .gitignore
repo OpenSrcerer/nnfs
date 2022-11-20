@@ -138,3 +138,5 @@ dmypy.json
 /.idea/git_toolbox_prj.xml
 /.fleet/run.json
 /.idea/other.xml
+/part_2/training_output.txt
+/part_2/training_progress.txt

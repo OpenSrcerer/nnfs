@@ -1,7 +1,7 @@
 import random
 
-from part_2.edalynv2.components.edalyn_module import EdalynModule
-from part_2.edalynv2.components.edalyn_value import EdalynValue
+from part_2.edalynv2.edalyn_module import EdalynModule
+from part_2.edalynv2.edalyn_value import EdalynValue
 
 
 class EdalynNeuron(EdalynModule):

@@ -12,6 +12,6 @@ def validate_digit_input(choice, lower_bound, upper_bound) -> bool:
     :return: Whether the given string passes the aforementioned criteria.
     """
     if not choice.isdigit() or int(choice) < lower_bound or int(choice) > upper_bound:
-        print("Invalid choice. Please enter a number from 1-7.")
+        print(f"Invalid choice. Please enter a number from {lower_bound} to {upper_bound}.")
         return False
     return True

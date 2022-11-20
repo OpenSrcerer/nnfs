@@ -9,28 +9,25 @@ class EdalynValue(Generic[T]):
     This is a custom "value wrapper" class created for the purposes of
     this network. It offers two main features:
 
-    - The implementation of backpropagation, arguably the most important.
+    - The implementation of backpropagation, arguably the most important
+    part of a neural network.
 
     - The storage of the gradient, indicating how changing this value
       affects the value of the parent node.
     """
 
-    def __init__(self, value: T, _children=(), _operation=''):
+    def __init__(self, value: T, _children=()):
         """
         Construct a new EdalynValue with a T value, gradient zero,
         and an empty backward closure.
 
         :param value: Numeric initial value for this node.
         :param _children:
-        :param _operation:
         """
         self.unwrap = value
         self.grad = 0
         self._backward = lambda: None
-
-        # internal variables used for autograd graph construction
         self._prev = set(_children)
-        self._op = _operation  # the op that produced this node, for graphviz / debugging / etc
 
     def __add__(self, other):
         """
@@ -40,7 +37,7 @@ class EdalynValue(Generic[T]):
         :return: An EdalynValue containing the result of the addition.
         """
         other = other if isinstance(other, EdalynValue) else EdalynValue(other)  # Wrap other value if primitive
-        out = EdalynValue(self.unwrap + other.unwrap, (self, other), '+')
+        out = EdalynValue(self.unwrap + other.unwrap, (self, other))
 
         def _backward():
             self.grad += out.grad
@@ -57,7 +54,7 @@ class EdalynValue(Generic[T]):
         :return: An EdalynValue containing the result of the multiplication.
         """
         other = other if isinstance(other, EdalynValue) else EdalynValue(other)
-        out = EdalynValue(self.unwrap * other.unwrap, (self, other), '*')
+        out = EdalynValue(self.unwrap * other.unwrap, (self, other))
 
         def _backward():
             self.grad += other.unwrap * out.grad
@@ -74,7 +71,7 @@ class EdalynValue(Generic[T]):
         :return: An EdalynValue containing the result of the exponentiation.
         """
         assert isinstance(other, (int, float)), "int or float are the only supported types."
-        out = EdalynValue(self.unwrap ** other, (self,), f'**{other}')
+        out = EdalynValue(self.unwrap ** other, (self,))
 
         def _backward():
             self.grad += (other * self.unwrap ** (other - 1)) * out.grad
@@ -88,7 +85,7 @@ class EdalynValue(Generic[T]):
 
         :return: max(0, unwrap)
         """
-        out = EdalynValue(0 if self.unwrap < 0 else self.unwrap, (self,), 'ReLU')
+        out = EdalynValue(0 if self.unwrap < 0 else self.unwrap, (self,))
 
         def _backward():
             self.grad += (out.unwrap > 0) * out.grad

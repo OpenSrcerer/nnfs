@@ -63,7 +63,7 @@ def read_choices() -> None:
 
 def load_table() -> None:
     """
-    Menu option 1: Reads the 6 columns of data from file partA_input_data.tx t and neatly
+    Menu option 1: Reads the 6 columns of data from file partA_input_data.txt and neatly
     displays it on screen.
 
     :return: None
@@ -95,18 +95,18 @@ def search_by_laps() -> None:
 def write_and_read_table() -> None:
     """
     Menu option 3: Calculates the average lap time per race then saves this new information as a
-    7th column in file partA_output_data.tx t . After saving into the file, it should also read
+    7th column in file partA_output_data.txt. After saving into the file, it should also read
     back and display all 7 columns of data on the screen (the 6 original columns + the new one
     based on the calculations).
 
     :return: None
     """
-    with open("../partA_output_data.txt", "w") as writeFile:
+    with open("./partA_output_data.txt", "w") as writeFile:
         writeFile.write(table.stringify(False))
         writeFile.flush()  # Flush buffer so file is immediately written
         os.fsync(writeFile)
 
-    with open("../partA_output_data.txt", "r") as readFile:
+    with open("./partA_output_data.txt", "r") as readFile:
         read_table = readFile.read()
         print(read_table)
 
