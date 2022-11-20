@@ -94,7 +94,7 @@ def load_table() -> None:
     """
     global table
 
-    with fi.input(files=['./res/partA_input_data.csv']) as f:
+    with fi.input(files=['./partA_input_data.csv']) as f:
         table = Table(f)
     print(table.stringify(True))
 
