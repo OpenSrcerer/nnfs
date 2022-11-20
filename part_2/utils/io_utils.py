@@ -32,13 +32,13 @@ def ingest_dataset(topology, ingest_output=True) -> (list, list):
     :param ingest_output: Whether to ingest the output dataset or not.
     :return: Tuple of datasets: (input, output).
     """
-    training_file_name = "./res/training_data.txt" if ingest_output else "./res/input_data.txt"
+    training_file_name = "./training_data.txt" if ingest_output else "./res/input_data.txt"
     file_type = "training" if ingest_output else "input"
 
     training_file_name = input(
         f"Input the name/location of your {file_type} data file (default: {training_file_name}): ")
     if len(training_file_name.strip()) == 0:
-        training_file_name = "./res/training_data.txt" if ingest_output else "./res/input_data.txt"
+        training_file_name = "./training_data.txt" if ingest_output else "./res/input_data.txt"
 
     # Process training file
     inputs = []
