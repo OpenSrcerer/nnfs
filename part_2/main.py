@@ -215,6 +215,7 @@ def display_training_graphics():
     plt.xlabel("Training Epoch")
     plt.ylabel("Loss Function Value")
     plt.yscale("log")
+    plt.tight_layout()
     plt.show()
 
 
